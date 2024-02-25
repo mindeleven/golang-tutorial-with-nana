@@ -3,7 +3,7 @@
 // https://www.youtube.com/watch?v=yyUHQIec83I
 // Source code and comments take from the videos of this course
 // Go documentation @ https://go.dev/doc/
-// https://youtu.be/yyUHQIec83I?feature=shared&t=2758
+// https://youtu.be/yyUHQIec83I?feature=shared&t=3081
 // ///////////////////////////////
 package main
 
@@ -52,6 +52,8 @@ func main() {
 	fmt.Println("How many tickets do you want:")
 	fmt.Scan(&userTickets)
 
-	fmt.Printf("User %v booked %v tickets\n", firstName, userTickets)
+	fmt.Printf(
+		"Thank you %v %v for booking %v tickets. You'll receive a confirmation email at %v.\n",
+		firstName, lastName, userTickets, email)
 
 }
