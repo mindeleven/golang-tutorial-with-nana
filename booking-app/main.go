@@ -3,7 +3,7 @@
 // https://www.youtube.com/watch?v=yyUHQIec83I
 // Source code and comments take from the videos of this course
 // Go documentation @ https://go.dev/doc/
-// https://youtu.be/yyUHQIec83I?feature=shared&t=3081
+// https://youtu.be/yyUHQIec83I?feature=shared&t=3376
 // ///////////////////////////////
 package main
 
@@ -34,7 +34,7 @@ func main() {
 	var firstName string
 	var lastName string
 	var email string
-	var userTickets int
+	var userTickets uint
 	// _, _ = firstName, userTickets
 
 	// asking users for their personal information
@@ -52,8 +52,12 @@ func main() {
 	fmt.Println("How many tickets do you want:")
 	fmt.Scan(&userTickets)
 
+	remainingTickets = remainingTickets - userTickets
+
 	fmt.Printf(
 		"Thank you %v %v for booking %v tickets. You'll receive a confirmation email at %v.\n",
 		firstName, lastName, userTickets, email)
+
+	fmt.Printf("%v tickets are remaining for the %v.", remainingTickets, conferenceName)
 
 }
