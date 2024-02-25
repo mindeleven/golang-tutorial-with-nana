@@ -16,7 +16,7 @@ func main() {
 	// assigning a type explicitly so that value can't be negative
 	var remainingTickets uint = 50
 	// alternative shorthand version (only for variables)
-	// syntactic sugar of go language
+	// syntactic sugar of go language (not for declaring types od constants)
 	conferenceName := "Go Conference"
 
 	// printing out the values
@@ -28,11 +28,30 @@ func main() {
 	// printing out the types
 	fmt.Printf("conferenceName is type %T, conferenceTickets is type %T, remainingTickets is type %T\n", conferenceName, conferenceTickets, remainingTickets)
 
-	var userName string
+	// printing the memory location of the remaining tickets
+	fmt.Println("memory location of the remaining tickets:", &remainingTickets)
+
+	var firstName string
+	var lastName string
+	var email string
 	var userTickets int
-	_, _ = userName, userTickets
-	userName = "Tom"
-	userTickets = 2
-	fmt.Printf("User %v booked %v tickets\n", userName, userTickets)
+	// _, _ = firstName, userTickets
+
+	// asking users for their personal information
+	// reading user input from the command line with fmt.Scan()
+	// scanning user input and assigning it
+	// adding a pointer to the firstName variable
+	// a pointer is a variable that points to the memory address of another variable
+	// pointers in golang are called special variables
+	fmt.Println("Dear user, please enter your first name:")
+	fmt.Scan(&firstName)
+	fmt.Println("Dear user, please enter your last name:")
+	fmt.Scan(&lastName)
+	fmt.Println("Dear user, please enter your email address:")
+	fmt.Scan(&email)
+	fmt.Println("How many tickets do you want:")
+	fmt.Scan(&userTickets)
+
+	fmt.Printf("User %v booked %v tickets\n", firstName, userTickets)
 
 }
