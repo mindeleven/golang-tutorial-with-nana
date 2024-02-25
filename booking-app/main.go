@@ -3,7 +3,7 @@
 // https://www.youtube.com/watch?v=yyUHQIec83I
 // Source code and comments take from the videos of this course
 // Go documentation @ https://go.dev/doc/
-// https://youtu.be/yyUHQIec83I?feature=shared&t=3376
+// https://youtu.be/yyUHQIec83I?feature=shared&t=4018
 // ///////////////////////////////
 package main
 
@@ -31,6 +31,14 @@ func main() {
 	// printing the memory location of the remaining tickets
 	fmt.Println("memory location of the remaining tickets:", &remainingTickets)
 
+	// arrays in go
+	// arrays have a fixed size
+	// set to 50 because we expect no more than 50 bookings
+	// type follows after number
+	// can have value afterwards (can be set to zero or empty)
+	var bookings [50]string
+	_ = bookings
+
 	var firstName string
 	var lastName string
 	var email string
@@ -52,12 +60,21 @@ func main() {
 	fmt.Println("How many tickets do you want:")
 	fmt.Scan(&userTickets)
 
+	// logic for updating the remaining tickets
 	remainingTickets = remainingTickets - userTickets
+	// storing the bookings
+	bookings[0] = firstName + " " + lastName
+
+	// printing the bookings
+	fmt.Printf("All bookings (whole array): %v\n", bookings)
+	fmt.Printf("My very first booking (first element of array): %v\n", bookings[0])
+	fmt.Printf("Type of bookings: %T\n", bookings)
+	fmt.Printf("Length of bookings: %v\n", len(bookings))
 
 	fmt.Printf(
 		"Thank you %v %v for booking %v tickets. You'll receive a confirmation email at %v.\n",
 		firstName, lastName, userTickets, email)
 
-	fmt.Printf("%v tickets are remaining for the %v.", remainingTickets, conferenceName)
+	fmt.Printf("%v tickets are remaining for the %v.\n", remainingTickets, conferenceName)
 
 }
