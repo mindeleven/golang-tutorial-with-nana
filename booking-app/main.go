@@ -39,6 +39,17 @@ func main() {
 	var bookings [50]string
 	_ = bookings
 
+	// slices in go (dynamic list)
+	// slice is an abstraction of an array with a dynamic size
+	// creating a slice is like creating an array with a size definition
+	var bookings_slice []string
+	_ = bookings_slice
+	// alternative syntax:
+	var bookings_slice_2 = []string{}
+	_ = bookings_slice_2
+	bookings_slice_3 := []string{}
+	_ = bookings_slice_3
+
 	var firstName string
 	var lastName string
 	var email string
@@ -64,17 +75,23 @@ func main() {
 	remainingTickets = remainingTickets - userTickets
 	// storing the bookings
 	bookings[0] = firstName + " " + lastName
+	// adding the next element to a slice
+	// mot necessary to know the index
+	bookings_slice = append(bookings_slice, firstName+" "+lastName)
 
 	// printing the bookings
 	fmt.Printf("All bookings (whole array): %v\n", bookings)
 	fmt.Printf("My very first booking (first element of array): %v\n", bookings[0])
 	fmt.Printf("Type of bookings: %T\n", bookings)
 	fmt.Printf("Length of bookings: %v\n", len(bookings))
+	fmt.Printf("Length of bookings_slice: %v\n", len(bookings_slice))
 
 	fmt.Printf(
 		"Thank you %v %v for booking %v tickets. You'll receive a confirmation email at %v.\n",
 		firstName, lastName, userTickets, email)
 
 	fmt.Printf("%v tickets are remaining for the %v.\n", remainingTickets, conferenceName)
+
+	fmt.Printf("These are all of our bookings: %v\n", bookings_slice)
 
 }
