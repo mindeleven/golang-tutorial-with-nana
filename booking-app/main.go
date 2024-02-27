@@ -76,9 +76,11 @@ func main() {
 		// logic for updating the remaining tickets
 		if userTickets > remainingTickets {
 			fmt.Printf("We've only %v tickest remaining, so you can't book %v tickets.", remainingTickets, userTickets)
-			// user wants too many tickest so be break the loop
-			break
+			// user wants too many tickest so be break this iteration
+			// and go to the next iteration of the loop
+			continue
 		}
+
 		remainingTickets = remainingTickets - userTickets
 		// storing the bookings
 		bookings[0] = firstName + " " + lastName
