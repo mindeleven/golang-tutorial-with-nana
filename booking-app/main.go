@@ -9,6 +9,7 @@ package main
 
 import (
 	"fmt"
+	"strings"
 )
 
 func main() {
@@ -93,6 +94,19 @@ func main() {
 
 		fmt.Printf("%v tickets are remaining for the %v.\n", remainingTickets, conferenceName)
 
-		fmt.Printf("These are all of our bookings: %v\n", bookings_slice)
+		// showing only the first name of each user
+		// defining a slice for the first names
+		firstNames := []string{}
+		// to iterate over bookings we need a range expression
+		// range iterates over elements for different data structures
+		// for slices and arrays it gives back the index and value for each element
+		for _, booking := range bookings_slice {
+			// splitting the string
+			// strings.Fields() splits the string with whitespace as seperator
+			// returns a slice with two elements
+			var names = strings.Fields(booking)
+			firstNames = append(firstNames, names[0])
+		}
+		fmt.Printf("These are all of our bookings (first names): %v\n", firstNames)
 	}
 }
