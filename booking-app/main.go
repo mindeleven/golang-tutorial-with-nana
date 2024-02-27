@@ -3,7 +3,7 @@
 // https://www.youtube.com/watch?v=yyUHQIec83I
 // Source code and comments take from the videos of this course
 // Go documentation @ https://go.dev/doc/
-// https://youtu.be/yyUHQIec83I?feature=shared&t=4018
+// https://youtu.be/yyUHQIec83I?feature=shared&t=4504
 // ///////////////////////////////
 package main
 
@@ -50,48 +50,49 @@ func main() {
 	bookings_slice_3 := []string{}
 	_ = bookings_slice_3
 
-	var firstName string
-	var lastName string
-	var email string
-	var userTickets uint
-	// _, _ = firstName, userTickets
+	for {
+		var firstName string
+		var lastName string
+		var email string
+		var userTickets uint
+		// _, _ = firstName, userTickets
 
-	// asking users for their personal information
-	// reading user input from the command line with fmt.Scan()
-	// scanning user input and assigning it
-	// adding a pointer to the firstName variable
-	// a pointer is a variable that points to the memory address of another variable
-	// pointers in golang are called special variables
-	fmt.Println("Dear user, please enter your first name:")
-	fmt.Scan(&firstName)
-	fmt.Println("Dear user, please enter your last name:")
-	fmt.Scan(&lastName)
-	fmt.Println("Dear user, please enter your email address:")
-	fmt.Scan(&email)
-	fmt.Println("How many tickets do you want:")
-	fmt.Scan(&userTickets)
+		// asking users for their personal information
+		// reading user input from the command line with fmt.Scan()
+		// scanning user input and assigning it
+		// adding a pointer to the firstName variable
+		// a pointer is a variable that points to the memory address of another variable
+		// pointers in golang are called special variables
+		fmt.Println("Dear user, please enter your first name:")
+		fmt.Scan(&firstName)
+		fmt.Println("Dear user, please enter your last name:")
+		fmt.Scan(&lastName)
+		fmt.Println("Dear user, please enter your email address:")
+		fmt.Scan(&email)
+		fmt.Println("How many tickets do you want:")
+		fmt.Scan(&userTickets)
 
-	// logic for updating the remaining tickets
-	remainingTickets = remainingTickets - userTickets
-	// storing the bookings
-	bookings[0] = firstName + " " + lastName
-	// adding the next element to a slice
-	// mot necessary to know the index
-	bookings_slice = append(bookings_slice, firstName+" "+lastName)
+		// logic for updating the remaining tickets
+		remainingTickets = remainingTickets - userTickets
+		// storing the bookings
+		bookings[0] = firstName + " " + lastName
+		// adding the next element to a slice
+		// mot necessary to know the index
+		bookings_slice = append(bookings_slice, firstName+" "+lastName)
 
-	// printing the bookings
-	fmt.Printf("All bookings (whole array): %v\n", bookings)
-	fmt.Printf("My very first booking (first element of array): %v\n", bookings[0])
-	fmt.Printf("Type of bookings: %T\n", bookings)
-	fmt.Printf("Length of bookings: %v\n", len(bookings))
-	fmt.Printf("Length of bookings_slice: %v\n", len(bookings_slice))
+		// printing the bookings
+		fmt.Printf("All bookings (whole array): %v\n", bookings)
+		fmt.Printf("My very first booking (first element of array): %v\n", bookings[0])
+		fmt.Printf("Type of bookings: %T\n", bookings)
+		fmt.Printf("Length of bookings: %v\n", len(bookings))
+		fmt.Printf("Length of bookings_slice: %v\n", len(bookings_slice))
 
-	fmt.Printf(
-		"Thank you %v %v for booking %v tickets. You'll receive a confirmation email at %v.\n",
-		firstName, lastName, userTickets, email)
+		fmt.Printf(
+			"Thank you %v %v for booking %v tickets. You'll receive a confirmation email at %v.\n",
+			firstName, lastName, userTickets, email)
 
-	fmt.Printf("%v tickets are remaining for the %v.\n", remainingTickets, conferenceName)
+		fmt.Printf("%v tickets are remaining for the %v.\n", remainingTickets, conferenceName)
 
-	fmt.Printf("These are all of our bookings: %v\n", bookings_slice)
-
+		fmt.Printf("These are all of our bookings: %v\n", bookings_slice)
+	}
 }
