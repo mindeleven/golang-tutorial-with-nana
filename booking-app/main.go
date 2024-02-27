@@ -3,7 +3,7 @@
 // https://www.youtube.com/watch?v=yyUHQIec83I
 // Source code and comments take from the videos of this course
 // Go documentation @ https://go.dev/doc/
-// https://youtu.be/yyUHQIec83I?feature=shared&t=4504
+// https://youtu.be/yyUHQIec83I?feature=shared&t=5635
 // ///////////////////////////////
 package main
 
@@ -74,55 +74,61 @@ func main() {
 		fmt.Scan(&userTickets)
 
 		// logic for updating the remaining tickets
-		if userTickets > remainingTickets {
+
+		if userTickets <= remainingTickets {
+
+			remainingTickets = remainingTickets - userTickets
+			// storing the bookings
+			bookings[0] = firstName + " " + lastName
+			// adding the next element to a slice
+			// mot necessary to know the index
+			bookings_slice = append(bookings_slice, firstName+" "+lastName)
+
+			// printing the bookings
+			fmt.Printf("All bookings (whole array): %v\n", bookings)
+			fmt.Printf("My very first booking (first element of array): %v\n", bookings[0])
+			fmt.Printf("Type of bookings: %T\n", bookings)
+			fmt.Printf("Length of bookings: %v\n", len(bookings))
+			fmt.Printf("Length of bookings_slice: %v\n", len(bookings_slice))
+
+			fmt.Printf(
+				"Thank you %v %v for booking %v tickets. You'll receive a confirmation email at %v.\n",
+				firstName, lastName, userTickets, email)
+
+			fmt.Printf("%v tickets are remaining for the %v.\n", remainingTickets, conferenceName)
+
+			// showing only the first name of each user
+			// defining a slice for the first names
+			firstNames := []string{}
+			// to iterate over bookings we need a range expression
+			// range iterates over elements for different data structures
+			// for slices and arrays it gives back the index and value for each element
+			for _, booking := range bookings_slice {
+				// splitting the string
+				// strings.Fields() splits the string with whitespace as seperator
+				// returns a slice with two elements
+				var names = strings.Fields(booking)
+				firstNames = append(firstNames, names[0])
+			}
+			fmt.Printf("These are all of our bookings (first names): %v\n", firstNames)
+
+			// conditionals (if... else...)
+			// expression that evaluates to either true or false
+			// var noTicketsRemaining bool = remainingTickets == 0
+			if remainingTickets == 0 {
+				// end program
+				fmt.Println("Our conference is booked out, please come back next year!")
+				break
+			}
+
+		} else if userTickets == remainingTickets {
+			// do something that makes sense in this case
+			fmt.Printf("You're a lucky one, we've exactly %v tickest remaining.", remainingTickets)
+		} else {
 			fmt.Printf("We've only %v tickest remaining, so you can't book %v tickets.", remainingTickets, userTickets)
 			// user wants too many tickest so be break this iteration
 			// and go to the next iteration of the loop
-			continue
-		}
-
-		remainingTickets = remainingTickets - userTickets
-		// storing the bookings
-		bookings[0] = firstName + " " + lastName
-		// adding the next element to a slice
-		// mot necessary to know the index
-		bookings_slice = append(bookings_slice, firstName+" "+lastName)
-
-		// printing the bookings
-		fmt.Printf("All bookings (whole array): %v\n", bookings)
-		fmt.Printf("My very first booking (first element of array): %v\n", bookings[0])
-		fmt.Printf("Type of bookings: %T\n", bookings)
-		fmt.Printf("Length of bookings: %v\n", len(bookings))
-		fmt.Printf("Length of bookings_slice: %v\n", len(bookings_slice))
-
-		fmt.Printf(
-			"Thank you %v %v for booking %v tickets. You'll receive a confirmation email at %v.\n",
-			firstName, lastName, userTickets, email)
-
-		fmt.Printf("%v tickets are remaining for the %v.\n", remainingTickets, conferenceName)
-
-		// showing only the first name of each user
-		// defining a slice for the first names
-		firstNames := []string{}
-		// to iterate over bookings we need a range expression
-		// range iterates over elements for different data structures
-		// for slices and arrays it gives back the index and value for each element
-		for _, booking := range bookings_slice {
-			// splitting the string
-			// strings.Fields() splits the string with whitespace as seperator
-			// returns a slice with two elements
-			var names = strings.Fields(booking)
-			firstNames = append(firstNames, names[0])
-		}
-		fmt.Printf("These are all of our bookings (first names): %v\n", firstNames)
-
-		// conditionals (if... else...)
-		// expression that evaluates to either true or false
-		// var noTicketsRemaining bool = remainingTickets == 0
-		if remainingTickets == 0 {
-			// end program
-			fmt.Println("Our conference is booked out, please come back next year!")
-			break
+			// continue // not needed when changing the condition like we did
 		}
 
 	}
