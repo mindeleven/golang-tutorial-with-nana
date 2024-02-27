@@ -74,6 +74,11 @@ func main() {
 		fmt.Scan(&userTickets)
 
 		// logic for updating the remaining tickets
+		if userTickets > remainingTickets {
+			fmt.Printf("We've only %v tickest remaining, so you can't book %v tickets.", remainingTickets, userTickets)
+			// user wants too many tickest so be break the loop
+			break
+		}
 		remainingTickets = remainingTickets - userTickets
 		// storing the bookings
 		bookings[0] = firstName + " " + lastName
@@ -108,5 +113,15 @@ func main() {
 			firstNames = append(firstNames, names[0])
 		}
 		fmt.Printf("These are all of our bookings (first names): %v\n", firstNames)
+
+		// conditionals (if... else...)
+		// expression that evaluates to either true or false
+		// var noTicketsRemaining bool = remainingTickets == 0
+		if remainingTickets == 0 {
+			// end program
+			fmt.Println("Our conference is booked out, please come back next year!")
+			break
+		}
+
 	}
 }
