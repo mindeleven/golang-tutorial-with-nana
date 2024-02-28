@@ -51,7 +51,10 @@ func main() {
 	bookings_slice_3 := []string{}
 	_ = bookings_slice_3
 
+	// for loops can be conditional too
+	// for remainingTickets > 0 && len(bookings_slice) < 50 {
 	for {
+
 		var firstName string
 		var lastName string
 		var email string
