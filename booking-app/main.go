@@ -3,7 +3,7 @@
 // https://www.youtube.com/watch?v=yyUHQIec83I
 // Source code and comments take from the videos of this course
 // Go documentation @ https://go.dev/doc/
-// https://youtu.be/yyUHQIec83I?feature=shared&t=5635
+// https://youtu.be/yyUHQIec83I?feature=shared&t=6413
 // ///////////////////////////////
 package main
 
@@ -75,6 +75,13 @@ func main() {
 		fmt.Scan(&email)
 		fmt.Println("How many tickets do you want:")
 		fmt.Scan(&userTickets)
+
+		// validating user input
+		isValidName := len(firstName) >= 2 && len(lastName) >= 2
+		isValidEmail := strings.Contains(email, "@")
+		isValidTicketNumber := userTickets > 0 && userTickets <= remainingTickets
+
+		_, _, _ = isValidName, isValidEmail, isValidTicketNumber
 
 		// logic for updating the remaining tickets
 
